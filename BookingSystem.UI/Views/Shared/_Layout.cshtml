@@ -1,0 +1,73 @@
+﻿@{
+    var date = DateTime.Now;
+    var formattedDate = date.ToString("dddd, dd-MM-yyyy", new System.Globalization.CultureInfo("id-ID"));
+}
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BookingSystem.UI</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/font-awesome.css" />
+    <link rel="stylesheet" href="~/css/normalize.css" />
+    <link rel="stylesheet" href="~/BookingSystem.UI.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="grid-container">
+      <header>
+            <nav class="top-navbar navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-light mb-3">
+            <div class="container-fluid">
+                   <div class="main-logo">
+                        <img src="http://localhost:5099/images/Logo-kino.png" />
+                   </div>
+                    <div class="header-container">
+                        <div class="iner-logo"><h1>SPECTRUM</h1></div>
+                        <div class="button-container">
+                            <div>Welcome Wahyu</div>
+                            <div>@formattedDate</div>
+                            <div>Logout</div>
+                        </div>
+                    </div>
+            </div>
+        </nav>
+    </header>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+            <h2 class="nav-link disabled">Master</h2>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="BookingCode" asp-action="index">Booking Code</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Resource" asp-action="index">Resource</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+    </ul>
+      <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+      </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - BookingSystem.UI - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

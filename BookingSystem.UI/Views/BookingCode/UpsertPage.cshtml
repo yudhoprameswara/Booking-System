@@ -1,0 +1,19 @@
+﻿
+@model BookingSystem.DataModel.Master.CreateEditBCVM
+
+<form asp-action="Upsert" method="post">
+   
+    
+        <input type="hidden" asp-for="Id" />
+   
+        <div class="mb-3">
+        <label class="form-label">Book Code</label>
+        <input asp-for="BookingCode" type="text" class="form-control"  >
+    </div>
+    <div class="mb-3 form-check">
+        <input asp-for="Status" type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Status</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a class="btn btn-danger" asp-action="Index">Close</a>
+</form>

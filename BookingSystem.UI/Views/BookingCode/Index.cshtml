@@ -1,0 +1,33 @@
+﻿@model BookingSystem.DataModel.Master.IndexBCVM
+
+<div class="container">
+    <h1>Booking List</h1>
+    <a class="btn btn-primary" asp-action="UpsertPage">Add New</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Action</th>
+                <th>Status</th>
+                <th>Booking Code</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var row in Model.list)
+            {
+                <tr>
+                    <td>
+                        <a class="btn btn-warning"asp-action="UpsertPage" asp-route-id="@row.Id" >Edit</a>
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@row.Id">Delete</a>
+                    </td>
+            
+                    <td>
+                        <input type="checkbox" @(row.Status ? "checked" : "") disabled />
+                    </td>
+                    <td>
+                        @row.BookCode
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

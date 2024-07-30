@@ -1,0 +1,171 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-rows: 100px 1fr 50px;
+    grid-template-columns: 300px 1fr;
+    grid-template-areas:"header header"
+                        "sidebar main"
+                        "footer footer"
+}
+
+header {
+    grid-area: header;
+}
+
+ul.nav {
+    grid-area: sidebar;
+}
+
+main {
+    grid-area: main;
+    padding-top: 30px;
+}
+
+footer {
+    grid-area : footer;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    /* width: 100%; */
+    width: 100%;
+    background: #469ac7;
+    color: white;
+}
+
+.navbar {
+    height:100%;
+}
+
+.button-container {
+    width: 427px;
+    display: flex;
+    height: 100px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.iner-logo {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.main-logo {
+    width: 345px;
+    justify-content: center;
+    background: white;
+}
+.main-logo img {
+     width: 167px;
+     padding-top: 20px;
+}
+
+.form-table {
+    width: 75%;
+    margin: 20px 0;
+}
+
+.form-table td {
+    padding: 26px;
+    }
+
+.resoucrce-index-icon {
+    width: 125px;
+    border-radius:20px;
+}
+
+.table-input {
+ 
+    height: 300px;
+    border-radius: 4px;
+    display: inline-block;
+    width:800px;
+}
+
+
+.table-overflow {
+    overflow: auto;
+    background-color: #f4f4f4;
+    height: 230px;
+    border-radius: 20px;
+    text-align-last: center;
+}
+
+.table-form {
+    border-collapse: collapse;
+    border-radius: 4px;
+  
+    width: 100%;
+}
+
+    .table-form thead {
+        background-color: #cdcdcd;
+        color: black;
+       
+    }
+
+        .table-form thead tr th {
+            padding: 6px 6px;
+            text-align: start;
+            
+            width: 30%;
+        }
+
+    .table-form tbody tr:nth-child(even) {
+        background-color: #fcfcfc;
+    }
+
+    .table-form tbody tr td {
+        padding: 6px;
+        
+        overflow: auto;
+    }
+
+.table-button {
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+    background: #a1ffd3;
+    color: #000;
+    padding: 5px;
+    margin: 15px;
+}
+
+.remove-code-button {
+    border-radius: 7px;
+    border-style: none;
+    background: #ffaaaa;
+    padding: 5px;
+}
+
+.table-form-inside {
+    border-style: none;
+    height: 38px;
+    background: none;
+}

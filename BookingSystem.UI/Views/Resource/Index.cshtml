@@ -1,0 +1,40 @@
+﻿@model BookingSystem.DataModel.Master.IndexResource
+
+<div class="container">
+    <h1>Resource List</h1>
+    <a class="btn btn-primary" asp-action="UpsertPage">Add New</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Action</th>
+                <th>Resource Name</th>
+                <th>Status</th>
+                <th>Icon</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var row in Model.Rows)
+            {
+                <tr>
+                    <td>
+                        <a class="btn btn-warning"asp-action="UpsertPage" asp-route-id="@row.Id" >Edit</a>
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@row.Id">Delete</a>
+                    </td>
+                    <td>
+                        @row.Name
+                    </td>
+
+                    <td>
+                        <input type="checkbox" @(row.Status ? "checked" : "") disabled />
+                    </td>
+                    <td>
+                        @{
+                            var imagePath = $"http://localhost:5196/api/Resource/images/{row.Icon}";
+                        }
+                        <img class="resoucrce-index-icon" src="@imagePath" />
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
