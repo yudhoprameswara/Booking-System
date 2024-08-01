@@ -1,0 +1,55 @@
+﻿@model BookingSystem.DataModel.Master.Room.IndexRoom
+
+
+<div class="container">
+    <h1>Booking List</h1>
+    <a class="btn btn-primary" asp-action="UpsertPage">Add New</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Action</th>
+                <th>Room Name</th>
+                <th>Floor</th>
+                <th>Description</th>
+                <th>Location Office</th>
+                <th>Capacity</th>
+                <th>Room Colour</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var row in Model.list)
+            {
+                <tr>
+                    <td>
+                        <a class="btn btn-warning" asp-action="UpsertPage" asp-route-id="@row.roomId">Edit</a>
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@row.roomId">Delete</a>
+                    </td>
+
+                    <td>
+                       @row.name
+                    </td>
+
+                    <td>
+                       @row.floor
+                    </td>
+
+                    <td>
+                        @row.description
+                    </td>
+
+                    <td>
+                        @row.location
+                    </td>
+
+                    <td>
+                        @row.capacity
+                    </td>
+
+                    <td>
+                        @row.roomColour
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

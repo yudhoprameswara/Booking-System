@@ -130,10 +130,10 @@ public partial class BookingSystemDlsContext : DbContext
             entity.Property(e => e.RoomId).UseIdentityAlwaysColumn();
             entity.Property(e => e.CreatedDate).HasColumnType("timestamp(6) without time zone");
             entity.Property(e => e.DelDate).HasColumnType("timestamp(6) without time zone");
-            entity.Property(e => e.Description).HasMaxLength(1);
-            entity.Property(e => e.LocationOffice).HasMaxLength(1);
+            entity.Property(e => e.Description).HasMaxLength(500);
+            entity.Property(e => e.LocationOffice).HasMaxLength(500);
             entity.Property(e => e.ResourceId).HasColumnName("ResourceID");
-            entity.Property(e => e.RoomColor).HasMaxLength(1);
+            entity.Property(e => e.RoomColor).HasMaxLength(500);
             entity.Property(e => e.RoomName).HasColumnType("character varying");
             entity.Property(e => e.UpdateDate).HasColumnType("timestamp without time zone");
 

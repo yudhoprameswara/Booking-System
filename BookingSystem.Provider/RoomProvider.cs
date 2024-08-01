@@ -1,5 +1,7 @@
 ﻿using BookingSystem.DataAccess.Models;
 using BookingSystem.DataModel.Master;
+using BookingSystem.DataModel.Master.Dropdown;
+using BookingSystem.DataModel.Master.Room;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +27,28 @@ namespace BookingSystem.Provider
         private MstRoom Get(int Id)
         {
             return _context.MstRooms.SingleOrDefault(a => a.RoomId == Id);
+        }
+
+
+        public IndexRoom GetIndex()
+        {
+            var indexRoom = new IndexRoom();
+
+            var listRoom = from a in _context.MstRooms
+                         where !a.DelDate.HasValue
+                         select new RowRoomVM
+                         {
+                             roomId = a.RoomId,
+                             name = a.RoomName,
+                             floor = a.Floor,
+                             capacity = a.Capacity,
+                             description = a.Description,
+                             roomColour = a.RoomColor,
+                             location = a.LocationOffice
+
+                         };
+            indexRoom.list = listRoom.ToList();
+            return indexRoom;
         }
 
         public void InsertRoom(CreateEditRoomVM model)
@@ -58,5 +82,45 @@ namespace BookingSystem.Provider
             _context.SaveChanges();
         }
 
+
+        public void DeleteRoom(int Id)
+        {
+            var room = Get(Id);
+            room.DelBy = 2;
+            room.DelDate = DateTime.Now;
+            _context.SaveChanges();
+        }
+
+        public CreateEditRoomVM GetSingle(int id)
+        {
+            var model = new CreateEditRoomVM { Id = id };
+
+            var entity = _context.MstRooms.SingleOrDefault(x => x.RoomId == id);
+            model.Id = entity.RoomId;
+            model.Name = entity.RoomName;
+            model.floor = entity.Floor;
+            model.description = entity.Description;
+            model.location = entity.LocationOffice;
+            model.capacity = entity.Capacity;
+            model.colour = entity.RoomColor;
+
+            return model;
+        }
+
+        public ListDropdown LocationDropdown()
+        {
+            var list = new ListDropdown();
+
+            var listLocation = from a in _context.MstLocations
+                           where !a.DelDate.HasValue
+                           select new LocationDropdown
+                           {
+                                id = a.Id,
+                                location = a.Name
+                           };
+            list.locationDropdowns = listLocation.ToList();
+            return list;
+
+        }
     }
 }

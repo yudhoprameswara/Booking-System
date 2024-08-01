@@ -27,15 +27,16 @@ namespace BookingSystem.Provider
             return _context.MstResourceCodes.SingleOrDefault(a => a.Id == id);
         }
 
-        public  void InsertResource(CreateEditResourceVM model) { 
-            var newResource = new MstResource();
-            newResource.Id = model.Id;
-            newResource.ResouceName =model.Name;
-            newResource.Status = model.Status;
-            newResource.CreatedBy = 1;
-            newResource.CreatedDate = DateTime.Now;
-            newResource.ResourceIcon = model.Icon;
-            _context.MstResources.Add(newResource);
+        public  void InsertResource(CreateEditResourceVM model) {
+            var res = new MstResource
+            {
+                ResouceName = model.Name,
+                Status = model.Status,
+                ResourceIcon = model.Icon,
+                CreatedBy = 1,
+                CreatedDate = DateTime.Now
+            };
+            _context.MstResources.Add(res);
             _context.SaveChanges();
             foreach (var item in model.code)
             {
@@ -153,7 +154,7 @@ namespace BookingSystem.Provider
         public List<CreateEditResCodVM> GetListResCode(int resourceId)
         {
             var list = from a in AllResourceCode()
-                       where a.ResourceId == resourceId
+                       where a.ResourceId == resourceId && !a.DelDate.HasValue
                        select new CreateEditResCodVM
                        {
                            Id = a.Id,
